@@ -44,9 +44,8 @@ Die RESTful API des Backends ermöglicht den Zugriff auf Nachrichtenartikel und 
 ## 💡 Mitwirken
 Wir freuen uns über Beiträge und Verbesserungsvorschläge! 
 
-
 ## 👥 Kontakt
-Falls du Fragen hast oder zur Weiterentwicklung beitragen möchtest, melde dich gerne über unser [GitHub Issues](https://github.com/dein-account/molo-news-backend/issues) oder kontaktiere uns per E-Mail unter `kontakt@molo.news`.
+Falls du Fragen hast oder zur Weiterentwicklung beitragen möchtest, kontaktiere uns per E-Mail unter `kontakt@molo.news`.
 
-Viel Spaß beim Entwickeln! 🌟
+
 
