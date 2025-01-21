@@ -1,0 +1,16 @@
+ul#id_tags {
+    display: flex;
+    flex-flow: row wrap;
+}
+ul#id_tags li > span{
+    text-align: center;
+    font-weight: bold;
+    color: black;
+}
+ul#id_tags ul {
+margin: 0 0 20px 0;
+}
+ul#id_tags > li {
+    /* display: flex; */
+    width: 250px;
+}

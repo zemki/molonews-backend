@@ -1,0 +1,17 @@
+[Unit]
+Description=matomo celery service
+After=network.target
+
+[Service]
+Type=oneshot
+User=molonews
+Group=molonews
+
+WorkingDirectory=/home/molonews/molonews
+
+PIDFile=/var/run/celery.pid
+
+ExecStart=/home/molonews/molonews/venv/bin/celery  -A molo worker -l info
+
+[Install]
+WantedBy=multi-user.target

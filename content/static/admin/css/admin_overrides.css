@@ -1,0 +1,33 @@
+/* force checkboxes to be visible */
+input[name=mode]{
+    display: inline;
+}
+input[name=byday]{
+    display: inline;
+}
+
+.limit {
+    display: None;
+}
+td[class=delete]{
+    display:None;
+}
+
+.calendar-widget {
+    display: inline-block;
+}
+.calendar-widgets {
+    display: inline-block;
+}
+
+h2 {
+    display: None;
+}
+
+p[class=tooltip-text] {
+    #border-width: 2px 2px 2px;
+    #border-style: solid;
+    #margin: 1px 10px 10px;
+    #padding: 2px;
+    white-space: pre-line;
+}

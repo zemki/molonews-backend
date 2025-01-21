@@ -1,0 +1,54 @@
+#Django>=2.2,<2.3
+Django==2.2.17
+#Pillow==7.0.0
+Pillow==8.0.1
+#django-debug-toolbar==2.2
+django-debug-toolbar==3.1.1
+#django-extensions==2.2.9
+django-extensions==3.1.0
+django-loginas==0.3.9
+django-versatileimagefield==2.0
+ipython==7.19.0
+
+#feedparser==5.2.1
+feedparser==6.0.2
+#lxml==4.5.1
+lxml==4.6.2
+#beautifulsoup4==4.9.1
+beautifulsoup4==4.9.3
+
+python-dateutil==2.8.1
+psycopg2==2.8.6
+django-jet==1.0.8
+#r-django-jet==1.0.8
+pydash==4.7.6
+django-ipware==2.1.0
+
+# rest
+#djangorestframework==3.11.0
+djangorestframework==3.12.2
+Markdown==3.1.1
+#django-filter==2.3.0
+django-filter==2.4.0
+#drf-yasg==1.17.1
+drf-yasg==1.20.0
+
+# firebase
+pyfcm==1.4.7
+
+# opengraph
+webpreview==1.6.0
+
+# matomo integration
+#django-server-side-matomo==2.0.2
+django-server-side-matomo==2.1.0
+# TODO
+celery==5.0.2
+future==0.18.2
+
+# ckeditor
+#django-ckeditor==5.9.0
+django-ckeditor==6.0.0
+
+django-recurrence==1.10.3
+#django-eventtools==1.0.1

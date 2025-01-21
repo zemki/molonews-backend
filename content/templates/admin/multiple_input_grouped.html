@@ -1,0 +1,23 @@
+<link rel="stylesheet" type="text/css" href="/static/admin/css/admin_tags.css">
+
+{% with id=widget.attrs.id %}
+    <!-- Erstelle eine ungeordnete Liste. Wenn eine ID oder Klasse vorhanden ist, füge sie hinzu. -->
+    <ul{% if id %} id="{{ id }}"{% endif %}{% if widget.attrs.class %} class="{{ widget.attrs.class }}"{% endif %}>
+        <!-- Gehe durch jede Gruppe in den Optionen -->
+        {% for group, options, index in widget.optgroups %}
+            {% if group %}
+                <!-- Wenn eine Gruppe existiert, erstelle eine Liste für diese Gruppe -->
+                <li>
+                    <ul{% if id %} id="{{ id }}_{{ index }}"{% endif %}>
+            {% endif %}
+            <!-- Füge Optionen zur Gruppe hinzu -->
+            {% for option in options %}
+                <li>{% include option.template_name with widget=option %}</li>
+            {% endfor %}
+            {% if group %}
+                    </ul>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endwith %}

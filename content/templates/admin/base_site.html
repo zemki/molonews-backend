@@ -1,0 +1,79 @@
+{% extends "admin/base_site.html" %}
+{% load static i18n %}
+
+{% block extrahead %}
+<script src="{% url 'jsi18n' %}"></script>
+{% endblock %}
+
+{% block blockbots %}
+<meta name="robots" content="NONE,NOARCHIVE">
+{% endblock %}
+
+{% block extrastyle %}
+    {% if user.is_contributor %}
+        <style>
+            #container {
+                padding-left: 0 !important;
+            }
+            .sidebar,
+            .sidebar-header-wrapper,
+            .sidebar-container-toggle {
+                display: none !important;
+            }
+        </style>
+    {% endif %}
+{% endblock %}
+
+
+{% block branding %}
+    <h1>Molonews</h1>
+{% endblock %}
+{% comment %}
+
+{% block branding %}
+    <h1>Molonews</h1>
+    <img src="{%  static 'admin/img/Molo.png' %}" height="40"></img>
+{% endblock %}
+
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+        {% block crumbs %}
+            {% if title %} &rsaquo; {{ title }}{% endif %}
+        {% endblock %}
+        <h1>Molo news</h1>
+        <img>url("admin/img/Molo.png")</img>
+    </div>
+{% endblock %}
+{% endcomment %}
+
+
+{% block footer %}<div id="footer"></div>
+<script>
+const currentUrl = window.location.pathname;
+if (currentUrl == "/content/article/"){
+    const collection = document.getElementsByClassName("field-id");
+    for (let i = 0; i < collection.length; i++) {
+        let firstChild = collection[i].firstChild;
+        firstChild.target = '_blank';
+    }
+}
+
+let position_article = currentUrl.search("/content/article/");
+let position_change = currentUrl.search("change");
+
+if (position_article == 0 && position_change > 0){
+    const collection = document.getElementsByClassName("url");
+    for (let i = 0; i < collection.length; i++) {
+        let child = collection[i].children[0];
+        if (child != null){
+            console.log(child);
+            child.target = '_blank';
+        }
+    }
+}
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,42 @@
+# ignore user content
+www/
+
+# ignore ML Models files because they are very large
+ml/models/
+
+# ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+
+# ignore the virtual environment
+venv/
+
+# ignore the database
+db.sqlite3
+
+# ignore the logs
+logs/
+log-qr.html
+log-qr_old.html
+promt.txt
+promptresult.txt
+
+# ignore the legacy code
+legacy/
+
+# ignore .hypothesis folder
+.hypothesis/
+
+# ignore the settings
+molo/settings/
+
+# ignore the migrations
+molo/migrations/
+content/migrations/
+
+# ignore the server setup
+server/
+.vscode/settings.json
+.DS_Store

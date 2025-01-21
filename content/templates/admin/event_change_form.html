@@ -1,0 +1,65 @@
+{% extends "admin/change_form.html" %}
+
+<!-- Load necessary Django template libraries -->
+{% load i18n admin_urls static admin_modify %}
+
+<!-- Load static files for internationalization in JavaScript -->
+<script src="{% url 'jsi18n' %}"></script>
+
+<!-- Overriding the document ready block to include custom styles and scripts -->
+{% block admin_change_form_document_ready %}
+    {{ block.super }}
+
+    <!-- Custom stylesheets for the admin interface -->
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/jquery.modal.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/admin_overrides.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/bootstrap-datepicker.standalone.min.css' %}">
+
+    <!-- jQuery and Bootstrap Datepicker scripts for interactive components -->
+    <script type="text/javascript" src="{% static 'admin/js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/bootstrap-datepicker.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/bootstrap-datepicker.de.min.js' %}"></script>
+
+    <!-- Custom scripts for additional functionalities in the admin interface -->
+    <script type="text/javascript" src="{% static 'admin/js/event_change_form.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/event_inlines.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/jquery.modal.min.js' %}"></script>
+{% endblock %}
+
+<!-- Customizing the field sets to be displayed in the admin form -->
+{% block field_sets %}
+    <!-- Render the management form for CSRF protection and form validation -->
+    {{ adminform.management_form }}
+
+    <!-- Iterate over each fieldset and include a custom template for field rendering -->
+    {% for fieldset in adminform %}
+        <!-- Custom fieldsets template -->
+        {% include "admin/event_fieldset.html" with inline_admin_formsets=inline_admin_formsets %}
+    {% endfor %}
+{% endblock %}
+
+<!-- Customizing the inline field sets to avoid duplication and maintain structure -->
+{% block inline_field_sets %}
+    <!-- Render the management form for inline formsets -->
+    {{ inline_admin_formset.management_form }}
+
+    <!-- Iterate over each inline formset and include its respective template -->
+    {% for inline_admin_formset in inline_admin_formsets %}
+        <!-- Render the inline formset only if it's not marked to be inserted after another element -->
+        {% if not inline_admin_formset.opts.insert_after %}
+            {% include inline_admin_formset.opts.template %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+<!-- Conditionally render submit buttons at the top of the form -->
+{% if save_on_top %}
+    {% block submit_buttons_top %}
+        {% custom_submit_row %}
+    {% endblock %}
+{% endif %}
+
+<!-- Render submit buttons at the bottom of the form -->
+{% block submit_buttons_bottom %}
+    {% custom_submit_row %}
+{% endblock %}

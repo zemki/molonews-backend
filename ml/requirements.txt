@@ -1,0 +1,4 @@
+beautifulsoup4
+transformers
+numpy
+onnxruntime

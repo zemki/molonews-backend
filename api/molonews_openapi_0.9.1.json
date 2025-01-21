@@ -1,0 +1,2094 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "# Allgemein \n## User-Ids\nDie Routen werden grundsätzlich nicht gesichert; sie sind durch Kenntnis der URL für jeden sicht- und abrufbar.\n\nDie Übertragung der `X-Device-ID` als Custom-Header-Field in einigen GET- und allen PUT-, POST- und DELETE-Routen wird zur Identifizierung des Geräts / Users verwendet, damit eine Zuordnung zwischen App-Frontend und Web-Backend hergestellt werden kann. Unter iOS wird hierfür der [identfierForVendor](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor) und unter Android die [FirebaseInstanceId](https://firebase.google.com/docs/reference/android/com/google/firebase/iid/FirebaseInstanceId) verwendet.\n\nEine Nutzerverwaltung ist an dieser Stelle ausdrücklich nicht gewünscht und soll zu einem späteren Zeitpunkt realisiert werden. Sollte ein App-Benutzer mehrere Geräte verwenden, so sind die Daten nicht synchronisiert, sondern gelten pro Gerät. Auch nach der Deinstallation der App oder einem Gerätewechsel ist kein Zugriff auf bestehende Daten mehr möglich.\n\n\n## Responses\n\n### POST\n\nPOST-Routen geben bei erfolgreicher Verarbeitung lediglich '204'-Antworten\nohne Content im Response-Body zurück, um geringe Übertragungskapazitäten und\neine hohe Geschwindigkiet (gerade für mobile Umgebungen) zu gewährleisten.\n\n\n### 4XX\n\nTritt ein Fehler auf, so befindet sich im Response-Body ein anonymes\nJSON-Object mit der Property 'message', die eine zur Frontend-Anzeige\ngeeignete Fehlermeldung enthält.\n",
+    "version": "0.9.1",
+    "title": "molo.news"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8080/api/v1"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Startup",
+      "description": "Anmeldung"
+    },
+    {
+      "name": "Onboarding",
+      "description": "Konfiguration"
+    },
+    {
+      "name": "Newsfeed",
+      "description": "Hauptansicht"
+    },
+    {
+      "name": "Artikel",
+      "description": "Detailansicht eines Artikel"
+    },
+    {
+      "name": "Profil",
+      "description": "Profil eines Medienbereitstellers"
+    },
+    {
+      "name": "Kalender",
+      "description": "Events"
+    },
+    {
+      "name": "Feedback",
+      "description": "Meldung zur App / Infos und Neuigkeiten"
+    },
+    {
+      "name": "Mitmachen",
+      "description": "Inhalte bereitstellen"
+    }
+  ],
+  "paths": {
+    "/register": {
+      "post": {
+        "deprecated": true,
+        "tags": [
+          "Startup"
+        ],
+        "summary": "Registrierung als Benutzer",
+        "description": "",
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Benutzername existiert bereits"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Passwort genügt nicht den Sicherheitsanforderungen"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "get": {
+        "deprecated": true,
+        "tags": [
+          "Startup"
+        ],
+        "summary": "Login des Benutzers",
+        "description": "Die Location als zentraler Punkt der News wird für Anzeigezwecke an dieser Stelle zurückgegeben und lokal auf dem Gerät gesichert. Der `title` kann so im Newsfeed angezeigt werden und `latitude` und `longitude` zur Visualisierung des aktuellen Standorts auf der Karte verwendet werden.",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Location"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Benutzername oder Passwort falsch"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags": {
+      "get": {
+        "tags": [
+          "Onboarding"
+        ],
+        "summary": "Liste der verfügbaren Tags / Themen abrufen",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Tag"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "keine Themen gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Onboarding"
+        ],
+        "summary": "Alle Tags einer Kategorie auswählen",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          },
+          {
+            "in": "query",
+            "name": "category",
+            "required": true,
+            "description": "1 = Termine, 2 = Mobilität, 3 = News, 4 = Engagement",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tags/{tag_id}": {
+      "post": {
+        "tags": [
+          "Onboarding"
+        ],
+        "summary": "Tag auswählen",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          },
+          {
+            "in": "path",
+            "name": "tag_id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Tag nicht gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/location": {
+      "post": {
+        "tags": [
+          "Onboarding"
+        ],
+        "summary": "Ort festlegen",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Location"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/communication_media": {
+      "get": {
+        "tags": [
+          "Onboarding"
+        ],
+        "summary": "Liste der verfügbaren Medien abrufen",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NewsProvider"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "keine Medien gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/communication_media/push": {
+      "post": {
+        "deprecated": true,
+        "tags": [
+          "Onboarding"
+        ],
+        "summary": "Push für Medien-Molos aktivieren, die redaktionell als \"heiße News\" eingestuft wurden",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "deprecated": true,
+        "tags": [
+          "Onboarding"
+        ],
+        "summary": "Push für Medien-Molos deaktivieren",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/communication_media/{id}": {
+      "post": {
+        "tags": [
+          "Onboarding"
+        ],
+        "summary": "Medium für \"Meine Molos\" auswählen",
+        "description": "Über den Query-Parameter selection wird die Art der Aktivierung unterschieden\\:\n* `selection = 0` => Keine\n* `selection = 1` => Nach Tag\n* `selection = 2` => Alle\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "example": 41,
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/selectionQueryParam"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Medium nicht gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/collectives": {
+      "get": {
+        "tags": [
+          "Onboarding"
+        ],
+        "summary": "Liste der verfügbaren Kollektive abrufen",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/NewsProvider"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "keine Kollektive gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/collectives/push": {
+      "post": {
+        "deprecated": true,
+        "tags": [
+          "Onboarding"
+        ],
+        "summary": "Push für Kollektive-Molos aktivieren, die redaktionell als \"heiße News\" eingestuft wurden",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "deprecated": true,
+        "tags": [
+          "Onboarding"
+        ],
+        "summary": "Push für Kollektive-Molos deaktivieren",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/collectives/{id}": {
+      "post": {
+        "tags": [
+          "Onboarding"
+        ],
+        "summary": "Kollektiv für \"Meine Molos\" auswählen",
+        "description": "Über den Query-Parameter selection wird die Art der Aktivierung unterschieden\\:\n* `selection = 0` => Keine\n* `selection = 1` => Nach Tag\n* `selection = 2` => Alle\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 41
+          },
+          {
+            "$ref": "#/components/parameters/selectionQueryParam"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Kollektiv nicht gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/news": {
+      "get": {
+        "tags": [
+          "Newsfeed"
+        ],
+        "summary": "Molos abrufen, suchen und / oder sortieren",
+        "description": "* Suche nach `search` (optional)\n* Sortiert nach `oder_id` (optional)\n* (Nach)laden gesteuert über `offset` und `limit`\n",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          },
+          {
+            "in": "query",
+            "name": "search",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "Werder Bremen"
+          },
+          {
+            "in": "query",
+            "name": "order_id",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 2
+          },
+          {
+            "$ref": "#/components/parameters/offsetQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/limitQueryParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "NewsWithProvider",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/News"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "news_provider": {
+                          "$ref": "#/components/schemas/NewsProvider"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "keine passenden News gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sortings": {
+      "get": {
+        "tags": [
+          "Newsfeed"
+        ],
+        "summary": "Verfügbare Sortierungen abrufen",
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Sorting"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "keine Sortierung gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/news_archive": {
+      "get": {
+        "tags": [
+          "Newsfeed"
+        ],
+        "summary": "Molo-Archiv öffnen",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          },
+          {
+            "$ref": "#/components/parameters/offsetQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/limitQueryParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "NewsWithProvider",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/News"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "news_provider": {
+                          "$ref": "#/components/schemas/NewsProvider"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Archiv nicht gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/news_archive/{id}": {
+      "post": {
+        "tags": [
+          "Newsfeed"
+        ],
+        "summary": "Molo archivieren",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 19
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Molo nicht gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Newsfeed"
+        ],
+        "summary": "Molo aus Archiv entfernen",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 19
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Molo nicht gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/news_reading_list": {
+      "get": {
+        "tags": [
+          "Newsfeed"
+        ],
+        "summary": "Molo-Leseliste öffnen",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          },
+          {
+            "$ref": "#/components/parameters/offsetQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/limitQueryParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "NewsWithProvider",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/News"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "news_provider": {
+                          "$ref": "#/components/schemas/NewsProvider"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Leseliste nicht gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/news_reading_list/{id}": {
+      "post": {
+        "tags": [
+          "Newsfeed"
+        ],
+        "summary": "Molo zur Leseliste / Bookmark hinzufügen",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 19
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Molo nicht gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Newsfeed"
+        ],
+        "summary": "Molo aus Leseliste / Bookmark entfernen",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 19
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Molo nicht gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/news/{id}": {
+      "get": {
+        "tags": [
+          "Artikel"
+        ],
+        "summary": "Detailansicht aufrufen",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 19
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "NewsWithProviderTagsRelatedMolos",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/News"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "news_provider": {
+                          "$ref": "#/components/schemas/NewsProvider"
+                        },
+                        "tags": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Tag"
+                          },
+                          "description": "Liste aller zugehörigen Tags"
+                        },
+                        "related_molos": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/News"
+                          },
+                          "description": "feste Liste ähnlicher Molos (z.B. 20, ohne Nachladefunktion)"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Molo nicht gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/news_provider_profile/{id}": {
+      "get": {
+        "tags": [
+          "Profil"
+        ],
+        "summary": "Profil aufrufen",
+        "description": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 356
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NewsProviderProfile"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Profil nicht gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/news_provider_profile/{id}/recent_molos": {
+      "get": {
+        "tags": [
+          "Profil"
+        ],
+        "summary": "letzte Molos abrufen",
+        "description": "Die Trennung vom eigentlich Profil erfolgt, damit Nachladeoperationen weiterer Molos über `offset` und `limit` möglich sind, ohne erneute, unnötige Übertragung der Profildaten.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "example": 41
+          },
+          {
+            "$ref": "#/components/parameters/offsetQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/limitQueryParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/News"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "keine Molos gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/events": {
+      "get": {
+        "tags": [
+          "Kalender"
+        ],
+        "summary": "aktuelle Kalendereinträge abrufen",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          },
+          {
+            "$ref": "#/components/parameters/offsetQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/limitQueryParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "EventsWithLocation",
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Event"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "location": {
+                          "$ref": "#/components/schemas/EventLocation"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "keine Molos gefunden"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/feedback_app": {
+      "post": {
+        "deprecated": true,
+        "tags": [
+          "Feedback"
+        ],
+        "summary": "Rückmeldung zur App abgeben",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Feedback"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/feedback_infos": {
+      "post": {
+        "deprecated": true,
+        "tags": [
+          "Feedback"
+        ],
+        "summary": "Infos und Neuigkeiten melden",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Feedback"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/participate": {
+      "post": {
+        "deprecated": true,
+        "tags": [
+          "Mitmachen"
+        ],
+        "summary": "Anfrage zur Aufnahme stellen",
+        "description": "",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deviceIdHeaderParam"
+          }
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Prospect"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Zuordnung nicht möglich"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "deviceIdHeaderParam": {
+        "in": "header",
+        "name": "X-Device-ID",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "example": "F91152BC-7D34-230E-E126-99AB2C7F",
+        "description": "Identifikation des Geräts / Users"
+      },
+      "selectionQueryParam": {
+        "in": "query",
+        "name": "selection",
+        "required": true,
+        "description": "0 = Keine, 1 = Nach Tag, 2 = Alle",
+        "schema": {
+          "type": "integer",
+          "enum": [
+            0,
+            1,
+            2
+          ]
+        },
+        "example": 2
+      },
+      "offsetQueryParam": {
+        "in": "query",
+        "name": "offset",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        },
+        "example": "0"
+      },
+      "limitQueryParam": {
+        "in": "query",
+        "name": "limit",
+        "required": true,
+        "schema": {
+          "type": "integer"
+        },
+        "example": 20
+      }
+    },
+    "schemas": {
+      "User": {
+        "type": "object",
+        "description": "Benutzer",
+        "required": [
+          "id",
+          "username",
+          "password"
+        ],
+        "properties": {
+          "id": {
+            "example": 5,
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "username": {
+            "example": "fz@convelop.de",
+            "type": "string",
+            "format": "email"
+          },
+          "password": {
+            "example": "********",
+            "type": "string",
+            "format": "password",
+            "writeOnly": true
+          }
+        }
+      },
+      "Tag": {
+        "type": "object",
+        "description": "Themen für Molos",
+        "required": [
+          "id",
+          "title",
+          "category"
+        ],
+        "properties": {
+          "id": {
+            "example": 5,
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "title": {
+            "example": "Lokalpolitik",
+            "type": "string"
+          },
+          "category": {
+            "example": 1,
+            "description": "1 = Termine, 2 = Mobilität, 3 = News, 4 = Engagement",
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3,
+              4
+            ]
+          }
+        }
+      },
+      "Location": {
+        "type": "object",
+        "description": "Zentrum des Radius' für Molos",
+        "required": [
+          "id",
+          "title",
+          "latitude",
+          "longitude"
+        ],
+        "properties": {
+          "id": {
+            "example": 625,
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "title": {
+            "example": "Schwachhausen / Mein Zuhause",
+            "type": "string"
+          },
+          "latitude": {
+            "example": 53.1104,
+            "type": "number",
+            "format": "float"
+          },
+          "longitude": {
+            "example": 8.8594,
+            "type": "number",
+            "format": "float"
+          }
+        }
+      },
+      "NewsProvider": {
+        "type": "object",
+        "description": "Medienbereitsteller für Molos",
+        "required": [
+          "id",
+          "title",
+          "news_provider_type_id"
+        ],
+        "properties": {
+          "id": {
+            "example": 41,
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "title": {
+            "example": "taz",
+            "type": "string"
+          },
+          "news_provider_type_id": {
+            "example": 1,
+            "type": "integer",
+            "format": "int32",
+            "description": "foreign key"
+          },
+          "location_id": {
+            "example": 625,
+            "type": "integer",
+            "format": "int32",
+            "description": "foreign key"
+          }
+        }
+      },
+      "NewsProviderType": {
+        "type": "object",
+        "description": "Art des Medienbereitsteller",
+        "required": [
+          "id",
+          "title"
+        ],
+        "properties": {
+          "id": {
+            "example": 2,
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "title": {
+            "example": "Kollektiv",
+            "type": "string"
+          }
+        }
+      },
+      "NewsProviderProfile": {
+        "type": "object",
+        "description": "Basisinformation zum Medienbereitsteller",
+        "required": [
+          "id",
+          "title"
+        ],
+        "properties": {
+          "id": {
+            "example": 356,
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "logo": {
+            "example": "https://example.de/path/to/logo",
+            "type": "string",
+            "format": "url"
+          },
+          "title": {
+            "example": "Werder Bremen",
+            "type": "string"
+          },
+          "subtitle": {
+            "example": "Bremer Sportverein",
+            "type": "string"
+          },
+          "abstract": {
+            "example": "Sportverein Werder Bremen e.V., commonly known as Werder Bremen, is a German sports club located in Bremen in the northwest German federal state Free Hanseatic City of Bremen. The club was founded in 1899 and has grown to 40.400 members. It is best known for its associated football team.",
+            "type": "string",
+            "maxLength": 250
+          },
+          "homepage": {
+            "example": "https://www.werder.de",
+            "type": "string"
+          }
+        }
+      },
+      "News": {
+        "type": "object",
+        "description": "News (Molo)",
+        "required": [
+          "id",
+          "published_at",
+          "title",
+          "abstract",
+          "is_hot",
+          "is_bookmarked_by_user",
+          "news_provider_id"
+        ],
+        "properties": {
+          "id": {
+            "example": 19,
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "published_at": {
+            "example": "2019-09-06 12:25:00",
+            "type": "string",
+            "format": "date-time"
+          },
+          "external_url": {
+            "example": "https://example.de/path/to/news_article",
+            "type": "string",
+            "format": "url"
+          },
+          "title": {
+            "example": "Titelverteidiger Duo gesprengt",
+            "type": "string"
+          },
+          "image": {
+            "example": "https://example.de/path/to/image",
+            "type": "string",
+            "format": "url"
+          },
+          "abstract": {
+            "example": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.",
+            "type": "string",
+            "maxLength": 250
+          },
+          "content": {
+            "example": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.",
+            "type": "string",
+            "maxLength": 1000,
+            "nullable": true,
+            "description": "in Listenaufrufen ist diese Property nicht erforderlich und sollte aufgrund der hohen Datenmenge nicht mit / als NULL übertragen werden. Die einzige Route bei der diese Property gefüllt sein sollte ist die Detailansicht eines Artikels: `/news/{id}`"
+          },
+          "is_hot": {
+            "example": false,
+            "type": "boolean"
+          },
+          "is_bookmarked_by_user": {
+            "example": false,
+            "type": "boolean"
+          },
+          "news_provider_id": {
+            "example": 41,
+            "type": "integer",
+            "format": "int32",
+            "description": "foreign key"
+          }
+        }
+      },
+      "Sorting": {
+        "type": "object",
+        "description": "Sortierung",
+        "required": [
+          "id",
+          "published_at",
+          "title"
+        ],
+        "properties": {
+          "id": {
+            "example": 1,
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "title": {
+            "example": "Neueste zuerst",
+            "type": "string"
+          }
+        }
+      },
+      "Event": {
+        "type": "object",
+        "description": "Kalendereintrag",
+        "required": [
+          "id",
+          "start",
+          "title",
+          "event_location_id"
+        ],
+        "properties": {
+          "id": {
+            "example": 92,
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "start": {
+            "example": "2019-09-10 19:00:00",
+            "type": "string",
+            "format": "date-time"
+          },
+          "end": {
+            "example": null,
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "title": {
+            "example": "taz Salon im SAAL",
+            "type": "string"
+          },
+          "description": {
+            "example": "Wie funktioniert regieren zu dritt? Rot, grün und rot haben sich auf einen Koalitionsvertrag geeinigt. Ist der belastbare Basis oder hält er nur...",
+            "type": "string"
+          },
+          "event_location_id": {
+            "example": 53,
+            "type": "integer",
+            "format": "int32",
+            "description": "foreign key"
+          }
+        }
+      },
+      "EventLocation": {
+        "type": "object",
+        "description": "Adresse",
+        "required": [
+          "id",
+          "title"
+        ],
+        "properties": {
+          "id": {
+            "example": 53,
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "title": {
+            "example": "Lagerhaus",
+            "type": "string"
+          },
+          "street": {
+            "example": "Schildstraße",
+            "type": "string"
+          },
+          "street_no": {
+            "example": "12-19",
+            "type": "string"
+          },
+          "zip": {
+            "example": 28203,
+            "type": "string"
+          },
+          "city": {
+            "example": "Bremen",
+            "type": "string"
+          }
+        }
+      },
+      "Feedback": {
+        "type": "object",
+        "description": "Rückmeldung",
+        "required": [
+          "id",
+          "email",
+          "message"
+        ],
+        "properties": {
+          "id": {
+            "example": 211,
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "email": {
+            "example": "fz@convelop.de",
+            "type": "string"
+          },
+          "message": {
+            "example": "Hallo, danke für diese tolle App - ich bewerte euch mit 5 Sternen :-)",
+            "type": "string"
+          }
+        }
+      },
+      "Prospect": {
+        "type": "object",
+        "description": "Anmeldung als Kollektiv / Inhalteanbieter",
+        "required": [
+          "id",
+          "name",
+          "collective_name",
+          "email",
+          "message"
+        ],
+        "properties": {
+          "id": {
+            "example": 53,
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "name": {
+            "example": "Fabian Zweidar",
+            "type": "string"
+          },
+          "collective_name": {
+            "example": "FC Riensberg `11 e.V.\"",
+            "type": "string"
+          },
+          "email": {
+            "example": "fz@convelop.de",
+            "type": "string"
+          },
+          "url": {
+            "example": "http://www.fc-riensberg.de",
+            "type": "string"
+          },
+          "message": {
+            "example": "Hallo, ich habe tolle Neuigkeiten von meinem Fußball-Verein, die ich gerne mit und über euch teilen würde!",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

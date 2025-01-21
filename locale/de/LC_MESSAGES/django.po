@@ -1,0 +1,1311 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-27 11:40+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "abstract"
+msgstr "Abstrakt"
+
+msgid "title"
+msgstr "Titel"
+
+msgid "content"
+msgstr "Inhalt"
+
+msgid "tags"
+msgstr "Themen"
+
+msgid "The {name} draft \"{obj}\" was added successfully."
+msgstr "Der Entwurf {name} \"{obj}\" wurde erfolgreich hinzugefügt."
+
+msgid "recurring"
+msgstr "wiederkehrend"
+
+msgid "event date range"
+msgstr "Ereignisdatumsbereich"
+
+msgid "single event"
+msgstr "Einzelereignis"
+
+msgid "regular interval"
+msgstr "regelmäßiges Intervall"
+
+msgid "irregular interval"
+msgstr "unregelmäßiges Intervall"
+
+msgid "date"
+msgstr "Datum"
+
+msgid "moddate"
+msgstr "Änderungsdatum"
+
+msgid "link"
+msgstr "Link"
+
+msgid "foreign_id"
+msgstr "Fremd-ID"
+
+msgid "image_url"
+msgstr "Bild-URL"
+
+msgid "image_feed"
+msgstr "Bild-Feed"
+
+msgid "image_detail"
+msgstr "Bilddetail"
+
+msgid "image_source"
+msgstr "Bildquelle"
+
+msgid "address"
+msgstr "Adresse"
+
+msgid "source"
+msgstr "Quelle"
+
+msgid "published"
+msgstr "veröffentlicht"
+
+msgid "reviewed"
+msgstr "überprüft"
+
+msgid "up for review"
+msgstr "zur Überprüfung"
+
+msgid "draft"
+msgstr "Entwurf"
+
+msgid "is hot"
+msgstr "ist aktuell"
+
+msgid "push notification sent"
+msgstr "Push-Benachrichtigung gesendet"
+
+msgid "push notification queued"
+msgstr "Push-Benachrichtigung in Warteschlange"
+
+msgid "article"
+msgstr "Artikel"
+
+msgid "articles"
+msgstr "Artikel"
+
+msgid "event title"
+msgstr "Veranstaltungstitel"
+
+msgid "image_upload"
+msgstr "Bildupload"
+
+msgid "zip code"
+msgstr "Postleitzahl"
+
+msgid "event address"
+msgstr "Veranstaltungsadresse"
+
+msgid "event location"
+msgstr "Veranstaltungsort"
+
+msgid "themes"
+msgstr "Themen"
+
+msgid "is_recurring"
+msgstr "ist wiederkehrend"
+
+msgid "recurring_event_interval_days"
+msgstr "Intervalltage für wiederkehrende Ereignisse"
+
+msgid "recurring_event_end_date"
+msgstr "Enddatum des wiederkehrenden Ereignisses"
+
+msgid "event"
+msgstr "Ereignis"
+
+msgid "events"
+msgstr "Events"
+
+msgid "event draft"
+msgstr "Veranstaltungsentwurf"
+
+msgid "event drafts"
+msgstr "Veranstaltungsentwürfe"
+
+msgid "area"
+msgstr "Gebiet"
+
+msgid "areas"
+msgstr "Gebiete"
+
+msgid "app_url"
+msgstr "App-URL"
+
+msgid "app_urls"
+msgstr "App-URLs"
+
+msgid "name"
+msgstr "Name"
+
+msgid "type"
+msgstr "Typ"
+
+msgid "image"
+msgstr "Bild"
+
+msgid "active"
+msgstr "aktiv"
+
+msgid "category"
+msgstr "Kategorie"
+
+msgid "categories"
+msgstr "Kategorien"
+
+msgid "links"
+msgstr "Links"
+
+msgid "tag"
+msgstr "Tag"
+
+msgid "sources"
+msgstr "Quellen"
+
+msgid "request count"
+msgstr "Anzahl der Anfragen"
+
+msgid "article draft"
+msgstr "Artikelentwurf"
+
+msgid "article drafts"
+msgstr "Artikelentwürfe"
+
+msgid "start_date"
+msgstr "Startdatum"
+
+msgid "street"
+msgstr "Straße"
+
+msgid "town"
+msgstr "Stadt"
+
+msgid "event date"
+msgstr "Veranstaltungsdatum"
+
+msgid "event end date"
+msgstr "Veranstaltungsenddatum"
+
+msgid "recurrences"
+msgstr "Wiederholungen"
+
+msgid "An end date for a recurring event must be set."
+msgstr "Ein Enddatum für ein wiederkehrendes Ereignis muss festgelegt werden."
+
+msgid "An end date must be bigger than a start date."
+msgstr "Ein Enddatum muss größer als ein Startdatum sein."
+
+msgid "sub event"
+msgstr "Teilereignis"
+
+msgid "sub events"
+msgstr "Teilereignisse"
+
+msgid "appuser"
+msgstr "App-Benutzer"
+
+msgid "appusers"
+msgstr "App-Benutzer"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Publish"
+msgstr "Veröffentlichen"
+
+msgid "Submit"
+msgstr "Speichern"
+
+msgid "Delete"
+msgstr "Löschen"
+
+msgid "Publish as new "
+msgstr "Als neu veröffentlichen "
+
+msgid "Submit as new "
+msgstr "Als neu speichern "
+
+msgid "Save as draft"
+msgstr "Als Entwurf speichern"
+
+msgid "Save draft and continue editing"
+msgstr "Entwurf speichern und weiter bearbeiten"
+
+msgid "Save and continue editing"
+msgstr "Speichern und weiter bearbeiten"
+
+msgid "Save sketch and continue editing"
+msgstr "Skizze speichern und weiter bearbeiten"
+
+msgid "Change"
+msgstr "Ändern"
+
+msgid "View"
+msgstr "Ansehen"
+
+msgid "View on site"
+msgstr "Auf der Webseite ansehen"
+
+msgid "ambiguous option: %(option)s could match %(matches)s"
+msgstr "mehrdeutige Option: %(option)s könnte %(matches)s entsprechen"
+
+msgid "Search files"
+msgstr "Dateien suchen"
+
+msgid "Select an image to embed"
+msgstr "Wählen Sie ein Bild zum Einbetten aus"
+
+msgid "Browse for the image you want, then click 'Embed Image' to continue..."
+msgstr "Suchen Sie das gewünschte Bild aus, dann klicken Sie auf 'Bild einbetten', um fortzufahren..."
+
+msgid "No images found. Upload images using the 'Image Button' dialog's 'Upload' tab."
+msgstr "Keine Bilder gefunden. Laden Sie Bilder über die Registerkarte 'Hochladen' im Dialog 'Bildbutton' hoch."
+
+msgid "Images in: "
+msgstr "Bilder in: "
+
+msgid "Embed Image"
+msgstr "Bild einbetten"
+
+msgid "Play Slideshow"
+msgstr "Diashow abspielen"
+
+msgid "Pause Slideshow"
+msgstr "Diashow pausieren"
+
+msgid "&lsaquo; Previous Photo"
+msgstr "&lsaquo; Vorheriges Foto"
+
+msgid "Next Photo &rsaquo;"
+msgstr "Nächstes Foto &rsaquo;"
+
+msgid "Next &rsaquo;"
+msgstr "Weiter &rsaquo;"
+
+msgid "&lsaquo; Prev"
+msgstr "&lsaquo; Zurück"
+
+msgid "{editor}: Editing failed"
+msgstr "{editor}: Bearbeitung fehlgeschlagen"
+
+msgid "{editor}: Editing failed: {e}"
+msgstr "{editor}: Bearbeitung fehlgeschlagen: {e}"
+
+msgid "Aborted!"
+msgstr "Abgebrochen!"
+
+msgid "Show this message and exit."
+msgstr "Diese Nachricht anzeigen und beenden."
+
+msgid "(Deprecated) {text}"
+msgstr "(Veraltet) {text}"
+
+msgid "Options"
+msgstr "Optionen"
+
+msgid "Got unexpected extra argument ({args})"
+msgstr "Unerwartetes zusätzliches Argument erhalten ({args})"
+
+msgid "DeprecationWarning: The command {name!r} is deprecated."
+msgstr "DeprecationWarning: Der Befehl {name!r} ist veraltet."
+
+msgid "Commands"
+msgstr "Befehle"
+
+msgid "Missing command."
+msgstr "Befehl fehlt."
+
+msgid "No such command {name!r}."
+msgstr "Kein solcher Befehl {name!r}."
+
+msgid "Value must be an iterable."
+msgstr "Der Wert muss iterierbar sein."
+
+msgid "Takes {nargs} values but 1 was given."
+msgstr "Erwartet {nargs} Werte, aber es wurde 1 gegeben."
+
+msgid "env var: {var}"
+msgstr "Umgebungsvariable: {var}"
+
+msgid "(dynamic)"
+msgstr "(dynamisch)"
+
+msgid "default: {default}"
+msgstr "Standard: {default}"
+
+msgid "required"
+msgstr "erforderlich"
+
+msgid "%(prog)s, version %(version)s"
+msgstr "%(prog)s, Version %(version)s"
+
+msgid "Show the version and exit."
+msgstr "Die Version anzeigen und beenden."
+
+msgid "Error: {message}"
+msgstr "Fehler: {message}"
+
+msgid "Try '{command} {option}' for help."
+msgstr "Versuchen Sie '{command} {option}' für Hilfe."
+
+msgid "Invalid value: {message}"
+msgstr "Ungültiger Wert: {message}"
+
+msgid "Invalid value for {param_hint}: {message}"
+msgstr "Ungültiger Wert für {param_hint}: {message}"
+
+msgid "Missing argument"
+msgstr "Fehlendes Argument"
+
+msgid "Missing option"
+msgstr "Fehlende Option"
+
+msgid "Missing parameter"
+msgstr "Fehlender Parameter"
+
+msgid "Missing {param_type}"
+msgstr "Fehlender {param_type}"
+
+msgid "Missing parameter: {param_name}"
+msgstr "Fehlender Parameter: {param_name}"
+
+msgid "No such option: {name}"
+msgstr "Keine solche Option: {name}"
+
+msgid "Did you mean {possibility}?"
+msgstr "Meinten Sie {possibility}?"
+
+msgid "unknown error"
+msgstr "unbekannter Fehler"
+
+msgid "Could not open file {filename!r}: {message}"
+msgstr "Konnte Datei {filename!r} nicht öffnen: {message}"
+
+msgid "Argument {name!r} takes {nargs} values."
+msgstr "Argument {name!r} nimmt {nargs} Werte."
+
+msgid "Option {name!r} does not take a value."
+msgstr "Option {name!r} nimmt keinen Wert."
+
+msgid "Option {name!r} requires an argument."
+msgstr "Option {name!r} erfordert ein Argument."
+
+msgid "Shell completion is not supported for Bash versions older than 4.4."
+msgstr "Die Shell-Vervollständigung wird nicht für Bash-Versionen unterstützt, die älter als 4.4 sind."
+
+msgid "Couldn't detect Bash version, shell completion is not supported."
+msgstr "Konnte die Bash-Version nicht erkennen, Shell-Vervollständigung wird nicht unterstützt."
+
+msgid "Repeat for confirmation"
+msgstr "Zur Bestätigung wiederholen"
+
+msgid "Error: The value you entered was invalid."
+msgstr "Fehler: Der eingegebene Wert war ungültig."
+
+msgid "Error: {e.message}"
+msgstr "Fehler: {e.message}"
+
+msgid "Error: The two entered values do not match."
+msgstr "Fehler: Die beiden eingegebenen Werte stimmen nicht überein."
+
+msgid "Error: invalid input"
+msgstr "Fehler: ungültige Eingabe"
+
+msgid "Press any key to continue..."
+msgstr "Drücken Sie eine beliebige Taste, um fortzufahren..."
+
+msgid "Choose from:\n\t{choices}"
+msgstr "Wählen Sie aus:\n\t{choices}"
+
+msgid "{value!r} is not {choice}."
+msgstr "{value!r} ist nicht {choice}."
+
+msgid "{value!r} does not match the format {format}."
+msgstr "{value!r} entspricht nicht dem Format {format}."
+
+msgid "{value!r} is not a valid {number_type}."
+msgstr "{value!r} ist kein gültiger {number_type}."
+
+msgid "{value} is not in the range {range}."
+msgstr "{value} liegt nicht im Bereich {range}."
+
+msgid "{value!r} is not a valid boolean."
+msgstr "{value!r} ist kein gültiger Boolean."
+
+msgid "{value!r} is not a valid UUID."
+msgstr "{value!r} ist keine gültige UUID."
+
+msgid "file"
+msgstr "Datei"
+
+msgid "directory"
+msgstr "Verzeichnis"
+
+msgid "path"
+msgstr "Pfad"
+
+msgid "{name} {filename!r} does not exist."
+msgstr "{name} {filename!r} existiert nicht."
+
+msgid "{name} {filename!r} is a file."
+msgstr "{name} {filename!r} ist eine Datei."
+
+msgid "{name} '{filename}' is a directory."
+msgstr "{name} '{filename}' ist ein Verzeichnis."
+
+msgid "{name} {filename!r} is not readable."
+msgstr "{name} {filename!r} ist nicht lesbar."
+
+msgid "{name} {filename!r} is not writable."
+msgstr "{name} {filename!r} ist nicht beschreibbar."
+
+msgid "{name} {filename!r} is not executable."
+msgstr "{name} {filename!r} ist nicht ausführbar."
+
+msgid "{len_type} values are required, but {len_value} was given."
+msgstr "{len_type} Werte sind erforderlich, aber es wurde {len_value} gegeben."
+
+msgid "Messages"
+msgstr "Nachrichten"
+
+msgid "Site Maps"
+msgstr "Sitemaps"
+
+msgid "Static Files"
+msgstr "Statische Dateien"
+
+msgid "Syndication"
+msgstr "Syndication"
+
+msgid "That page number is not an integer"
+msgstr "Diese Seitenzahl ist keine ganze Zahl"
+
+msgid "That page number is less than 1"
+msgstr "Diese Seitenzahl ist kleiner als 1"
+
+msgid "That page contains no results"
+msgstr "Diese Seite enthält keine Ergebnisse"
+
+msgid "Enter a valid value."
+msgstr "Geben Sie einen gültigen Wert ein."
+
+msgid "Enter a valid URL."
+msgstr "Geben Sie eine gültige URL ein."
+
+msgid "Enter a valid integer."
+msgstr "Geben Sie eine gültige ganze Zahl ein."
+
+msgid "Enter a valid email address."
+msgstr "Geben Sie eine gültige E-Mail-Adresse ein."
+
+msgid "Enter a valid 'slug' consisting of letters, numbers, underscores or hyphens."
+msgstr "Geben Sie einen gültigen 'Slug' ein, der aus Buchstaben, Zahlen, Unterstrichen oder Bindestrichen besteht."
+
+msgid "Enter a valid 'slug' consisting of Unicode letters, numbers, underscores, or hyphens."
+msgstr "Geben Sie einen gültigen 'Slug' ein, der aus Unicode-Buchstaben, Zahlen, Unterstrichen oder Bindestrichen besteht."
+
+msgid "Enter a valid IPv4 address."
+msgstr "Geben Sie eine gültige IPv4-Adresse ein."
+
+msgid "Enter a valid IPv6 address."
+msgstr "Geben Sie eine gültige IPv6-Adresse ein."
+
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr "Geben Sie eine gültige IPv4- oder IPv6-Adresse ein."
+
+msgid "Enter only digits separated by commas."
+msgstr "Geben Sie nur durch Kommas getrennte Ziffern ein."
+
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr "Stellen Sie sicher, dass dieser Wert %(limit_value)s ist (es ist %(show_value)s)."
+
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr "Stellen Sie sicher, dass dieser Wert kleiner oder gleich %(limit_value)s ist."
+
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr "Stellen Sie sicher, dass dieser Wert größer oder gleich %(limit_value)s ist."
+
+msgid "Ensure this value has at least %(limit_value)d character (it has %(show_value)d)."
+msgstr "Stellen Sie sicher, dass dieser Wert mindestens %(limit_value)d Zeichen hat (er hat %(show_value)d)."
+
+msgid "Ensure this value has at most %(limit_value)d character (it has %(show_value)d)."
+msgstr "Stellen Sie sicher, dass dieser Wert höchstens %(limit_value)d Zeichen hat (er hat %(show_value)d)."
+
+msgid "Enter a number."
+msgstr "Geben Sie eine Zahl ein."
+
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgstr "Stellen Sie sicher, dass insgesamt nicht mehr als %(max)s Ziffer vorhanden sind."
+
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgstr "Stellen Sie sicher, dass nicht mehr als %(max)s Dezimalstellen vorhanden sind."
+
+msgid "Ensure that there are no more than %(max)s digit before the decimal point."
+msgstr "Stellen Sie sicher, dass vor dem Dezimalpunkt nicht mehr als %(max)s Ziffern vorhanden sind."
+
+msgid "File extension '%(extension)s' is not allowed. Allowed extensions are: '%(allowed_extensions)s'."
+msgstr "Die Dateierweiterung '%(extension)s' ist nicht erlaubt. Erlaubte Erweiterungen sind: '%(allowed_extensions)s'."
+
+msgid "Null characters are not allowed."
+msgstr "Nullzeichen sind nicht erlaubt."
+
+msgid "and"
+msgstr "und"
+
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr "%(model_name)s mit diesem %(field_labels)s existiert bereits."
+
+msgid "Value %(value)r is not a valid choice."
+msgstr "Der Wert %(value)r ist keine gültige Wahl."
+
+msgid "This field cannot be null."
+msgstr "Dieses Feld darf nicht null sein."
+
+msgid "This field cannot be blank."
+msgstr "Dieses Feld darf nicht leer sein."
+
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr "%(model_name)s mit diesem %(field_label)s existiert bereits."
+
+msgid "%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr "%(field_label)s muss einzigartig sein für %(date_field_label)s %(lookup_type)s."
+
+msgid "Field of type: %(field_type)s"
+msgstr "Feldtyp: %(field_type)s"
+
+msgid "Integer"
+msgstr "Ganzzahl"
+
+msgid "'%(value)s' value must be an integer."
+msgstr "Der Wert '%(value)s' muss eine ganze Zahl sein."
+
+msgid "Big (8 byte) integer"
+msgstr "Große (8 Byte) Ganzzahl"
+
+msgid "'%(value)s' value must be either True or False."
+msgstr "Der Wert '%(value)s' muss entweder True oder False sein."
+
+msgid "'%(value)s' value must be either True, False, or None."
+msgstr "Der Wert '%(value)s' muss entweder True, False oder None sein."
+
+msgid "Boolean (Either True or False)"
+msgstr "Boolean (entweder True oder False)"
+
+msgid "String (up to %(max_length)s)"
+msgstr "Zeichenkette (bis zu %(max_length)s)"
+
+msgid "Comma-separated integers"
+msgstr "Durch Kommas getrennte Ganzzahlen"
+
+msgid "'%(value)s' value has an invalid date format. It must be in YYYY-MM-DD format."
+msgstr "Der Wert '%(value)s' hat ein ungültiges Datumsformat. Es muss im Format JJJJ-MM-TT sein."
+
+msgid "'%(value)s' value has the correct format (YYYY-MM-DD) but it is an invalid date."
+msgstr "Der Wert '%(value)s' hat das korrekte Format (JJJJ-MM-TT), ist aber ein ungültiges Datum."
+
+msgid "Date (without time)"
+msgstr "Datum (ohne Zeit)"
+
+msgid "'%(value)s' value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ] format."
+msgstr "Der Wert '%(value)s' hat ein ungültiges Format. Es muss im Format JJJJ-MM-TT HH:MM[:ss[.uuuuuu]][TZ] sein."
+
+msgid "'%(value)s' value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ]) but it is an invalid date/time."
+msgstr "Der Wert '%(value)s' hat das korrekte Format (JJJJ-MM-TT HH:MM[:ss[.uuuuuu]][TZ]), ist aber ein ungültiges Datum/eine ungültige Zeit."
+
+msgid "Date (with time)"
+msgstr "Datum (mit Zeit)"
+
+msgid "'%(value)s' value must be a decimal number."
+msgstr "Der Wert '%(value)s' muss eine Dezimalzahl sein."
+
+msgid "Decimal number"
+msgstr "Dezimalzahl"
+
+msgid "'%(value)s' value has an invalid format. It must be in [DD] [HH:[MM:]]ss[.uuuuuu] format."
+msgstr "Der Wert '%(value)s' hat ein ungültiges Format. Es muss im Format [TT] [HH:[MM:]]ss[.uuuuuu] sein."
+
+msgid "Duration"
+msgstr "Dauer"
+
+msgid "Email address"
+msgstr "E-Mail-Adresse"
+
+msgid "File path"
+msgstr "Dateipfad"
+
+msgid "'%(value)s' value must be a float."
+msgstr "Der Wert '%(value)s' muss eine Fließkommazahl sein."
+
+msgid "Floating point number"
+msgstr "Fließkommazahl"
+
+msgid "IPv4 address"
+msgstr "IPv4-Adresse"
+
+msgid "IP address"
+msgstr "IP-Adresse"
+
+msgid "'%(value)s' value must be either None, True or False."
+msgstr "Der Wert '%(value)s' muss entweder None, True oder False sein."
+
+msgid "Boolean (Either True, False or None)"
+msgstr "Boolean (entweder True, False oder None)"
+
+msgid "Positive integer"
+msgstr "Positive Ganzzahl"
+
+msgid "Positive small integer"
+msgstr "Positive kleine Ganzzahl"
+
+msgid "Slug (up to %(max_length)s)"
+msgstr "Slug (bis zu %(max_length)s)"
+
+msgid "Small integer"
+msgstr "Kleine Ganzzahl"
+
+msgid "Text"
+msgstr "Text"
+
+msgid "'%(value)s' value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] format."
+msgstr "Der Wert '%(value)s' hat ein ungültiges Format. Es muss im Format HH:MM[:ss[.uuuuuu]] sein."
+
+msgid "'%(value)s' value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an invalid time."
+msgstr "Der Wert '%(value)s' hat das korrekte Format (HH:MM[:ss[.uuuuuu]]), ist aber eine ungültige Zeit."
+
+msgid "Time"
+msgstr "Zeit"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "Raw binary data"
+msgstr "Rohbinärdaten"
+
+msgid "'%(value)s' is not a valid UUID."
+msgstr "'%(value)s' ist keine gültige UUID."
+
+msgid "Universally unique identifier"
+msgstr "Universell eindeutiger Bezeichner (UUID)"
+
+msgid "File"
+msgstr "Datei"
+
+msgid "Image"
+msgstr "Bild"
+
+msgid "%(model)s instance with %(field)s %(value)r does not exist."
+msgstr "Instanz von %(model)s mit %(field)s %(value)r existiert nicht."
+
+msgid "Foreign Key (type determined by related field)"
+msgstr "Fremdschlüssel (Typ bestimmt durch zugehöriges Feld)"
+
+msgid "One-to-one relationship"
+msgstr "Eins-zu-eins-Beziehung"
+
+msgid "%(from)s-%(to)s relationship"
+msgstr "Beziehung von %(from)s zu %(to)s"
+
+msgid "%(from)s-%(to)s relationships"
+msgstr "Beziehungen von %(from)s zu %(to)s"
+
+msgid "Many-to-many relationship"
+msgstr "Viele-zu-viele-Beziehung"
+
+msgid ":?.!"
+msgstr ":?.!"
+
+msgid "This field is required."
+msgstr "Dieses Feld ist erforderlich."
+
+msgid "Enter a whole number."
+msgstr "Geben Sie eine ganze Zahl ein."
+
+msgid "Enter a valid date."
+msgstr "Geben Sie ein gültiges Datum ein."
+
+msgid "Enter a valid time."
+msgstr "Geben Sie eine gültige Zeit ein."
+
+msgid "Enter a valid date/time."
+msgstr "Geben Sie ein gültiges Datum/eine gültige Zeit ein."
+
+msgid "Enter a valid duration."
+msgstr "Geben Sie eine gültige Dauer ein."
+
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr "Die Anzahl der Tage muss zwischen {min_days} und {max_days} liegen."
+
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr "Es wurde keine Datei eingereicht. Überprüfen Sie den Kodierungstyp des Formulars."
+
+msgid "No file was submitted."
+msgstr "Es wurde keine Datei eingereicht."
+
+msgid "The submitted file is empty."
+msgstr "Die eingereichte Datei ist leer."
+
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgstr "Stellen Sie sicher, dass dieser Dateiname höchstens %(max)d Zeichen hat (er hat %(length)d)."
+
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr "Bitte reichen Sie entweder eine Datei ein oder aktivieren Sie das Kontrollkästchen zum Löschen, nicht beides."
+
+msgid "Upload a valid image. The file you uploaded was either not an image or a corrupted image."
+msgstr "Laden Sie ein gültiges Bild hoch. Die hochgeladene Datei war entweder kein Bild oder ein beschädigtes Bild."
+
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr "Wählen Sie eine gültige Option. %(value)s ist keine der verfügbaren Optionen."
+
+msgid "Enter a list of values."
+msgstr "Geben Sie eine Liste von Werten ein."
+
+msgid "Enter a complete value."
+msgstr "Geben Sie einen vollständigen Wert ein."
+
+msgid "Enter a valid UUID."
+msgstr "Geben Sie eine gültige UUID ein."
+
+msgid ":"
+msgstr ":"
+
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr "(Verstecktes Feld %(name)s) %(error)s"
+
+msgid "ManagementForm data is missing or has been tampered with"
+msgstr "ManagementForm-Daten fehlen oder wurden manipuliert"
+
+msgid "Please submit %d or fewer forms."
+msgstr "Bitte reichen Sie %d oder weniger Formulare ein."
+
+msgid "Please submit %d or more forms."
+msgstr "Bitte reichen Sie %d oder mehr Formulare ein."
+
+msgid "Order"
+msgstr "Reihenfolge"
+
+msgid "Please correct the duplicate data for %(field)s."
+msgstr "Bitte korrigieren Sie die doppelten Daten für %(field)s."
+
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr "Bitte korrigieren Sie die doppelten Daten für %(field)s, die einzigartig sein müssen."
+
+msgid "Please correct the duplicate data for %(field_name)s which must be unique for the %(lookup)s in %(date_field)s."
+msgstr "Bitte korrigieren Sie die doppelten Daten für %(field_name)s, die einzigartig sein müssen für den %(lookup)s in %(date_field)s."
+
+msgid "Please correct the duplicate values below."
+msgstr "Bitte korrigieren Sie die doppelten Werte unten."
+
+msgid "The inline value did not match the parent instance."
+msgstr "Der Inline-Wert stimmte nicht mit der übergeordneten Instanz überein."
+
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr "Wählen Sie eine gültige Option. Diese Option ist keine der verfügbaren Optionen."
+
+msgid "\"%(pk)s\" is not a valid value."
+msgstr "\"%(pk)s\" ist kein gültiger Wert."
+
+msgid "%(datetime)s couldn't be interpreted in time zone %(current_timezone)s; it may be ambiguous or it may not exist."
+msgstr "%(datetime)s konnte in der Zeitzone %(current_timezone)s nicht interpretiert werden; es könnte mehrdeutig sein oder nicht existieren."
+
+msgid "Clear"
+msgstr "Löschen"
+
+msgid "Currently"
+msgstr "Derzeit"
+
+msgid "Unknown"
+msgstr "Unbekannt"
+
+msgid "Yes"
+msgstr "Ja"
+
+msgid "No"
+msgstr "Nein"
+
+msgid "yes,no,maybe"
+msgstr "ja,nein,vielleicht"
+
+msgid "%(size)d byte"
+msgstr "%(size)d Byte"
+
+msgid "%s KB"
+msgstr "%s KB"
+
+msgid "%s MB"
+msgstr "%s MB"
+
+msgid "%s GB"
+msgstr "%s GB"
+
+msgid "%s TB"
+msgstr "%s TB"
+
+msgid "%s PB"
+msgstr "%s PB"
+
+msgid "p.m."
+msgstr "nachm."
+
+msgid "a.m."
+msgstr "vorm."
+
+msgid "PM"
+msgstr "PM"
+
+msgid "AM"
+msgstr "AM"
+
+msgid "midnight"
+msgstr "Mitternacht"
+
+msgid "noon"
+msgstr "Mittag"
+
+msgid "Monday"
+msgstr "Montag"
+
+msgid "Tuesday"
+msgstr "Dienstag"
+
+msgid "Wednesday"
+msgstr "Mittwoch"
+
+msgid "Thursday"
+msgstr "Donnerstag"
+
+msgid "Friday"
+msgstr "Freitag"
+
+msgid "Saturday"
+msgstr "Samstag"
+
+msgid "Sunday"
+msgstr "Sonntag"
+
+msgid "Mon"
+msgstr "Mo"
+
+msgid "Tue"
+msgstr "Di"
+
+msgid "Wed"
+msgstr "Mi"
+
+msgid "Thu"
+msgstr "Do"
+
+msgid "Fri"
+msgstr "Fr"
+
+msgid "Sat"
+msgstr "Sa"
+
+msgid "Sun"
+msgstr "So"
+
+msgid "January"
+msgstr "Januar"
+
+msgid "February"
+msgstr "Februar"
+
+msgid "March"
+msgstr "März"
+
+msgid "April"
+msgstr "April"
+
+msgid "May"
+msgstr "Mai"
+
+msgid "June"
+msgstr "Juni"
+
+msgid "July"
+msgstr "Juli"
+
+msgid "August"
+msgstr "August"
+
+msgid "September"
+msgstr "September"
+
+msgid "October"
+msgstr "Oktober"
+
+msgid "November"
+msgstr "November"
+
+msgid "December"
+msgstr "Dezember"
+
+msgid "jan"
+msgstr "Jan"
+
+msgid "feb"
+msgstr "Feb"
+
+msgid "mar"
+msgstr "Mär"
+
+msgid "apr"
+msgstr "Apr"
+
+msgid "may"
+msgstr "Mai"
+
+msgid "jun"
+msgstr "Jun"
+
+msgid "jul"
+msgstr "Jul"
+
+msgid "aug"
+msgstr "Aug"
+
+msgid "sep"
+msgstr "Sep"
+
+msgid "oct"
+msgstr "Okt"
+
+msgid "nov"
+msgstr "Nov"
+
+msgid "dec"
+msgstr "Dez"
+
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr "Jan."
+
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr "Feb."
+
+msgctxt "abbrev. month"
+msgid "March"
+msgstr "März"
+
+msgctxt "abbrev. month"
+msgid "April"
+msgstr "Apr."
+
+msgctxt "abbrev. month"
+msgid "May"
+msgstr "Mai"
+
+msgctxt "abbrev. month"
+msgid "June"
+msgstr "Juni"
+
+msgctxt "abbrev. month"
+msgid "July"
+msgstr "Juli"
+
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr "Aug."
+
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr "Sept."
+
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr "Okt."
+
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr "Nov."
+
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr "Dez."
+
+msgctxt "alt. month"
+msgid "January"
+msgstr "Januar"
+
+msgctxt "alt. month"
+msgid "February"
+msgstr "Februar"
+
+msgctxt "alt. month"
+msgid "March"
+msgstr "März"
+
+msgctxt "alt. month"
+msgid "April"
+msgstr "April"
+
+msgctxt "alt. month"
+msgid "May"
+msgstr "Mai"
+
+msgctxt "alt. month"
+msgid "June"
+msgstr "Juni"
+
+msgctxt "alt. month"
+msgid "July"
+msgstr "Juli"
+
+msgctxt "alt. month"
+msgid "August"
+msgstr "August"
+
+msgctxt "alt. month"
+msgid "September"
+msgstr "September"
+
+msgctxt "alt. month"
+msgid "October"
+msgstr "Oktober"
+
+msgctxt "alt. month"
+msgid "November"
+msgstr "November"
+
+msgctxt "alt. month"
+msgid "December"
+msgstr "Dezember"
+
+msgid "This is not a valid IPv6 address."
+msgstr "Dies ist keine gültige IPv6-Adresse."
+
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr "%(truncated_text)s…"
+
+msgid "or"
+msgstr "oder"
+
+msgid ", "
+msgstr ", "
+
+msgid "%d year"
+msgstr "%d Jahr"
+
+msgid "%d month"
+msgstr "%d Monat"
+
+msgid "%d week"
+msgstr "%d Woche"
+
+msgid "%d day"
+msgstr "%d Tag"
+
+msgid "%d hour"
+msgstr "%d Stunde"
+
+msgid "%d minute"
+msgstr "%d Minute"
+
+msgid "0 minutes"
+msgstr "0 Minuten"
+
+msgid "Forbidden"
+msgstr "Verboten"
+
+msgid "CSRF verification failed. Request aborted."
+msgstr "CSRF-Überprüfung fehlgeschlagen. Anforderung abgebrochen."
+
+msgid ""
+"You are seeing this message because this HTTPS site requires a 'Referer "
+"header' to be sent by your Web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+"Sie sehen diese Nachricht, weil diese HTTPS-Site einen 'Referer-Header' von Ihrem "
+"Webbrowser benötigt, aber keiner gesendet wurde. Dieser Header ist aus Sicherheitsgründen "
+"erforderlich, um sicherzustellen, dass Ihr Browser nicht von Dritten gekapert wird."
+
+msgid ""
+"If you have configured your browser to disable 'Referer' headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for 'same-"
+"origin' requests."
+msgstr ""
+"Wenn Sie Ihren Browser so konfiguriert haben, dass 'Referer-Header' deaktiviert sind, "
+"aktivieren Sie diese bitte wieder, zumindest für diese Site, für HTTPS-Verbindungen oder "
+"für 'Same-Origin'-Anfragen."
+
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the 'Referrer-Policy: no-referrer' header, please remove them. The "
+"CSRF protection requires the 'Referer' header to do strict referer checking. "
+"If you're concerned about privacy, use alternatives like <a "
+"rel=\"noreferrer\" ...> for links to third-party sites."
+msgstr ""
+"Wenn Sie den <meta name=\"referrer\" content=\"no-referrer\">-Tag verwenden oder "
+"den 'Referrer-Policy: no-referrer'-Header einschließen, entfernen Sie diese bitte. "
+"Der CSRF-Schutz erfordert den 'Referer'-Header, um eine strikte Überprüfung des Referers durchzuführen. "
+"Wenn Sie sich um Ihre Privatsphäre sorgen, verwenden Sie Alternativen wie <a "
+"rel=\"noreferrer\" ...> für Links zu Websites Dritter."
+
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+"Sie sehen diese Nachricht, weil diese Site beim Absenden von Formularen ein CSRF-Cookie benötigt. "
+"Dieses Cookie ist aus Sicherheitsgründen erforderlich, um sicherzustellen, dass Ihr Browser nicht von Dritten "
+"gekapert wird."
+
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for 'same-origin' requests."
+msgstr ""
+"Wenn Sie Ihren Browser so konfiguriert haben, dass Cookies deaktiviert sind, "
+"aktivieren Sie diese bitte wieder, zumindest für diese Site oder für 'Same-Origin'-Anfragen."
+
+msgid "More information is available with DEBUG=True."
+msgstr "Weitere Informationen sind verfügbar, wenn DEBUG=True gesetzt ist."
+
+msgid "No year specified"
+msgstr "Kein Jahr angegeben"
+
+msgid "Date out of range"
+msgstr "Datum außerhalb des Bereichs"
+
+msgid "No month specified"
+msgstr "Kein Monat angegeben"
+
+msgid "No day specified"
+msgstr "Kein Tag angegeben"
+
+msgid "No week specified"
+msgstr "Keine Woche angegeben"
+
+msgid "No %(verbose_name_plural)s available"
+msgstr "Keine %(verbose_name_plural)s verfügbar"
+
+msgid ""
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
+msgstr ""
+"Zukünftige %(verbose_name_plural)s sind nicht verfügbar, weil %(class_name)s."
+"allow_future ist False."
+
+msgid "Invalid date string '%(datestr)s' given format '%(format)s'"
+msgstr "Ungültiger Datumsstring '%(datestr)s' im Format '%(format)s' gegeben"
+
+msgid "No %(verbose_name)s found matching the query"
+msgstr "Kein %(verbose_name)s gefunden, das der Abfrage entspricht"
+
+msgid "Page is not 'last', nor can it be converted to an int."
+msgstr "Seite ist nicht 'letzte', noch kann sie in eine ganze Zahl umgewandelt werden."
+
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr "Ungültige Seite (%(page_number)s): %(message)s"
+
+msgid "Empty list and '%(class_name)s.allow_empty' is False."
+msgstr "Leere Liste und '%(class_name)s.allow_empty' ist False."
+
+msgid "Directory indexes are not allowed here."
+msgstr "Verzeichnisindizes sind hier nicht erlaubt."
+
+msgid "\"%(path)s\" does not exist"
+msgstr "\"%(path)s\" existiert nicht"
+
+msgid "Index of %(directory)s"
+msgstr "Index von %(directory)s"
+
+msgid "Django: the Web framework for perfectionists with deadlines."
+msgstr "Django: das Web-Framework für Perfektionisten mit Deadlines."
+
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+"Sehen Sie sich die <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">Versionshinweise</a> für Django %(version)s an"
+
+msgid "The install worked successfully! Congratulations!"
+msgstr "Die Installation war erfolgreich! Herzlichen Glückwunsch!"
+
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" "
+"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
+"configured any URLs."
+msgstr ""
+"Sie sehen diese Seite, weil <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" "
+"rel=\"noopener\">DEBUG=True</a> in Ihrer Einstellungsdatei steht und Sie keine URLs konfiguriert haben."
+
+msgid "Django Documentation"
+msgstr "Django-Dokumentation"
+
+msgid "Topics, references, &amp; how-to's"
+msgstr "Themen, Referenzen &amp; Anleitungen"
+
+msgid "Tutorial: A Polling App"
+msgstr "Tutorial: Eine Umfrage-App"
+
+msgid "Get started with Django"
+msgstr "Legen Sie los mit Django"
+
+msgid "Django Community"
+msgstr "Django-Community"
+
+msgid "Connect, get help, or contribute"
+msgstr "Verbinden, Hilfe erhalten oder beitragen"
+
+msgid "ipware app"
+msgstr "ipware-App"
+
+msgid "show this help message and exit"
+msgstr "diese Hilfenachricht anzeigen und beenden"
+
+msgid "Attempting to connect to qpid with SASL mechanism %s"
+msgstr "Versuch, eine Verbindung zu qpid mit SASL-Mechanismus %s herzustellen"
+
+msgid "Connected to qpid with SASL mechanism %s"
+msgstr "Verbunden mit qpid über SASL-Mechanismus %s"
+
+msgid "Unable to connect to qpid with SASL mechanism %s"
+msgstr "Verbindung zu qpid mit SASL-Mechanismus %s nicht möglich"
+
+msgid ""
+"Your login is now switched to {username} - log out to become your original "
+"user!"
+msgstr ""
+"Ihr Login wurde jetzt auf {username} umgestellt - melden Sie sich ab, um wieder Ihr ursprünglicher "
+"Benutzer zu werden!"
+
+msgid "You are now logged back in as {username}."
+msgstr "Sie sind jetzt wieder als {username} eingeloggt."
+
+msgid "Log in as user"
+msgstr "Als Benutzer einloggen"
+
+msgid "You do not have permission to do that."
+msgstr "Sie haben keine Berechtigung, das zu tun."
+
+msgid "Versatile Image Field"
+msgstr "Vielseitiges Bildfeld"
+
+msgid "Primary Point of Interest"
+msgstr "Hauptinteressenpunkt"

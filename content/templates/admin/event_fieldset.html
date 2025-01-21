@@ -1,0 +1,77 @@
+<fieldset class="module aligned {{ fieldset.classes }}">
+    <!-- Überschrift des Fieldsets, falls vorhanden -->
+    {% if fieldset.name %}
+        <h2>{{ fieldset.name }}</h2>
+    {% endif %}
+    
+    <!-- Beschreibung des Fieldsets, falls vorhanden -->
+    {% if fieldset.description %}
+        <div class="description">{{ fieldset.description|safe }}</div>
+    {% endif %}
+    
+    <!-- Iteration über Zeilen des Fieldsets -->
+    {% for line in fieldset %}
+        <div class="form-row
+                    {% if line.fields|length_is:'1' and line.errors %} errors{% endif %}
+                    {% if not line.has_visible_field %} hidden{% endif %}
+                    {% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
+            
+            <!-- Anzeige von Fehlern, falls nur ein Feld vorhanden ist -->
+            {% if line.fields|length_is:'1' %}{{ line.errors }}{% endif %}
+            
+            <!-- Iteration über Felder der Zeile -->
+            {% for field in line %}
+                <!-- Hilfe-Text für das Feld, falls vorhanden -->
+                {% if field.field.help_text %}
+                    <!-- Hier könnte der Hilfe-Text platziert werden -->
+                {% endif %}
+                
+                <!-- Feld-Container -->
+                <div {% if not line.fields|length_is:'1' %}
+                        class="field-box
+                             {% if field.field.name %} field-{{ field.field.name }}{% endif %}
+                             {% if not field.is_readonly and field.errors %} errors{% endif %}
+                             {% if field.field.is_hidden %} hidden{% endif %}"
+                    {% elif field.is_checkbox %}
+                        class="checkbox-row"
+                    {% endif %}>
+                    
+                    <!-- Anzeige von Fehlern, falls mehr als ein Feld vorhanden ist und das Feld nicht schreibgeschützt ist -->
+                    {% if not line.fields|length_is:'1' and not field.is_readonly %}{{ field.errors }}{% endif %}
+                    
+                    <!-- Anzeige des Feldes, abhängig vom Typ (Checkbox oder anderes) -->
+                    {% if field.is_checkbox %}
+                        {{ field.field }}{{ field.label_tag }}
+                    {% else %}
+                        {{ field.label_tag }}
+                        {% if field.is_readonly %}
+                            <div class="readonly">{{ field.contents }}</div>
+                        {% else %}
+                            {{ field.field }}
+                        {% endif %}
+                    {% endif %}
+                </div>
+                
+                <!-- Inline-Formsets, falls zugehörig -->
+                {{ inline_admin_formsets.management_form }}
+                {% for inline_admin_formset in inline_admin_formsets %}
+                    {% if inline_admin_formset.opts.insert_after == field.field.name %}
+                        </div>
+                        <!-- Hier könnte ein Tooltip eingefügt werden -->
+                        <!-- Kalender-Widgets -->
+                        <div class="form-row calendar-widgets inline" id="calendar-widgets">
+                            <div class="calendar-widget" id="calendar-widget-1"></div>
+                            <div class="calendar-widget" id="calendar-widget-2"></div>
+                            <div class="calendar-widget" id="calendar-widget-3"></div>
+                            <div class="calendar-widget" id="calendar-widget-4"></div>
+                        </div>
+                        <div id="calendar-button"></div> 
+                        <div id="applyTimes-button"></div>
+                        {% include inline_admin_formset.opts.template %}
+                        <div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+</fieldset>
